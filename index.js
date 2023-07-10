@@ -179,12 +179,13 @@ let myObject = {
   // Оголошення методу Symbol.iterator для об'єкта "myObject"
   //Повертаємо this
   [Symbol.iterator]() {
-    this.category = this.currentIndex;
     return this;
   },
   next() {
     if (this.currentIndex < this.category.length) {
-      return { done: false, value: this.current++ };
+      const value = this.category[this.currentIndex].name;
+      this.currentIndex++;
+      return { value, done: false };
     } else {
       return { done: true };
     }
