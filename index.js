@@ -56,7 +56,7 @@ console.log(createAndCompareTwoSymbols("My Symbol")); // Виведе false
 // Функція createSymbolForKey створює новий символ за допомогою Symbol.for() та повертає його
 function createSymbolForKey(key) {
   const symbol = Symbol.for(key);
-
+  return symbol;
   // Використовуємо Symbol.for() для створення нового символу symbol зі значенням key
   // Symbol.for() шукає символ в глобальному реєстру символів. Якщо символ з таким ключем вже існує, він повертає його, в іншому випадку створює новий символ з даним ключем та додає його в реєстр
   // Повертаємо створений символ
@@ -64,6 +64,11 @@ function createSymbolForKey(key) {
 
 // Функція compareSymbolsForKey порівнює два символи за допомогою оператора '==='
 function compareSymbolsForKey(symbol1, symbol2) {
+  if (symbol1 === symbol2) {
+    return true;
+  } else {
+    return false;
+  }
   // Використовуємо оператор '===' для порівняння двох символів
   // Якщо два символи однакові, він поверне true, в іншому випадку - false
 }
@@ -149,7 +154,7 @@ let rangeObject = {
 // Функція "useSymbolIterator" використовує ітератор для отримання значень об'єкта
 function useSymbolIterator(obj) {
   let result = [];
-  for (let num of rangeObject) {
+  for (let num of obj) {
     result = [...result, num];
   }
   return result;
